@@ -13,7 +13,6 @@ import homebg from "../../public/home_background.jpg"
 const Navbar = () => {
     return (
         <>
-            <div className='h-20 w-screen'></div>
             <div className='h-20 w-screen bg-gray-900 flex items-center justify-between fixed top-0'>
                 <div className='w-full flex items-center gap-5 ml-3'>
                     <FontAwesomeIcon className='h-12 w-12 text-white' icon={faFire} size='2xl' />
