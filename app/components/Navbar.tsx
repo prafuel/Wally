@@ -12,18 +12,20 @@ import { Form } from 'react-bootstrap'
 
 import homebg from "../../public/home_background.jpg"
 
+/* <div className="search-section w-full flex items-center">
+                        <FontAwesomeIcon icon={faMagnifyingGlass} className='pt-3 pb-3 pl-3 bg-gray-900 h-full rounded-l-full text-white' />
+                        <input className="w-full p-3 outline-none rounded-r-full" type="text" placeholder='Search here... Ex. dark' />
+                        <Form.Control className="text-white w-full p-2 outline-none rounded-r-full bg-gray-900" type="search" placeholder='Search here... Ex. Dark' />
+                        <button className='p-3 pr-4 bg-blue-300 rounded-r-full'>GO</button>
+                    </div> */
+
 const Navbar = () => {
     return (
         <>
             <div className='h-16 w-screen bg-black flex items-center justify-between fixed top-0'>
                 <div className='w-full flex items-center gap-5 ml-3'>
                     <FontAwesomeIcon className='h-12 w-12 text-white' icon={faFire} size='2xl' />
-                    <div className="search-section w-full flex items-center">
-                        <FontAwesomeIcon icon={faMagnifyingGlass} className='pt-3 pb-3 pl-3 bg-gray-900 h-full rounded-l-full text-white' />
-                        {/* <input className="w-full p-3 outline-none rounded-r-full" type="text" placeholder='Search here... Ex. dark' /> */}
-                        <Form.Control className="text-white w-full p-2 outline-none rounded-r-full bg-gray-900" type="search" placeholder='Search here... Ex. Dark' />
-                        {/* <button className='p-3 pr-4 bg-blue-300 rounded-r-full'>GO</button> */}
-                    </div>
+                    
                 </div>
                 <ul className='flex justify-evenly text-white' style={{ width: "50%" }}>
                     <li>
