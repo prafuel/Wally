@@ -1,7 +1,6 @@
 import React, { useEffect, useReducer, useRef, useState } from 'react'
 import Image from "next/image"
 
-import { height } from '@fortawesome/free-solid-svg-icons/faGlobe'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { faAnglesUp } from '@fortawesome/free-solid-svg-icons'
@@ -30,26 +29,28 @@ const Section1 = () => {
   //   getImages();
   // }, [])
 
-  const [images, setImages] = useState([]);
+  const [images, setImages]: [any, any] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
   const [page, setPage] = useState(1);
 
 
   const fetchImages = async () => {
     try {
-      const { data } = await axios.get(`${API_URL}?query=${searchInput.current.value}&page=${page}&per_page=${IMAGES_PER_PAGE}&client_id=${API_KEY}`);
-
+      if (searchInput.current) {
+        const { data } = await axios.get(`${API_URL}?query=${searchInput.current['value']}&page=${page}&per_page=${IMAGES_PER_PAGE}&client_id=${API_KEY}`);
+        setImages(data.results);
+        setTotalPages(data.total_pages);
+      }
       // console.log("result", result.data);
-      setImages(data.results);
-      setTotalPages(data.total_pages);
     } catch (error) {
       console.log(error);
     }
   }
 
 
-  const searchInput = useRef(null);
-  const handleSearch = (event) => {
+  const searchInput = useRef<HTMLInputElement | null>(null);
+
+  const handleSearch = (event: any) => {
     event.preventDefault();
     // console.log(searchInput.current.value);
     if (searchInput.current) {
@@ -58,9 +59,12 @@ const Section1 = () => {
     }
   }
 
-  const addIntoSearch = (searchValue) => {
-    searchInput.current.value = searchValue;
-    fetchImages();
+  const addIntoSearch = (searchValue: string) => {
+    if (searchInput.current != null) {
+      searchInput.current['value'] = searchValue;
+      fetchImages();
+      // console.log(searchInput.current['value'])
+    }
   }
 
 
@@ -108,9 +112,9 @@ const Section1 = () => {
             </div>
             <div className="w-full h-fit flex flex-row justify-evenly cursor-pointer flex-wrap">
               {
-                hashtagArr.map(item => {
+                hashtagArr.map((item: string,index) => {
                   return (
-                    <span key={Date.now.toString()} onClick={() => addIntoSearch(item)} className='text-white p-2 hover:text-blue-400'>#{item}</span>
+                    <span key={index} onClick={() => addIntoSearch(item)} className='text-white p-2 hover:text-blue-400'>#{item}</span>
                   )
                 })
               }
@@ -128,18 +132,18 @@ const Section1 = () => {
           backgroundColor: "rgba(0, 0, 0, 0.1)",
           backdropFilter: "blur(5px)"
         }}>
-          <FontAwesomeIcon icon={faExchange}/>
+          <FontAwesomeIcon icon={faExchange} />
           <span>Switch</span>
         </div>
         <div className='text-white absolute bottom-4' style={{ left: "50%" }}> <a href="#section1"><FontAwesomeIcon icon={faAnglesUp} size='2xl' /></a> </div>
       </div>
       <div className='showImages bg-gray-900 justify-center pt-3 flex flex-wrap gap-3'>
         {
-          images.map(image => {
+          images.map((image: any) => {
             return (
               // <img src={image.urls.raw} alt={image.alt_description}/>
               <>
-                <div id="section1" key={image.id} className='border border-gray-700 p-4 inline rounded-xl mb-10 mt-3 hover:border-2 hover:border-white' style={{ width: "30%" }}>
+                <div id="section1" key={Date.toString()} className='border border-gray-700 p-4 inline rounded-xl mb-10 mt-3 hover:border-2 hover:border-white' style={{ width: "30%" }}>
                   <div className="download p-2 mb-3 flex justify-end items-center gap-3">
                     <FontAwesomeIcon icon={faDownload} className='text-xl text-white' />
                     <FontAwesomeIcon icon={faShare} className='text-xl text-white' />
