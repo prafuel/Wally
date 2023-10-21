@@ -66,8 +66,11 @@ const Section1 = () => {
 
   // Image Swapper
   const bgImage = [
+    "download1.jpg",
     "mountain.png",
-    "download1.jpg"
+    "nature.jpg",
+    "summer.jpg",
+    "waterfall.jpg"
   ];
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -94,7 +97,7 @@ const Section1 = () => {
           }}>
             <div className="gap-72 bigHeading flex items-center">
               <kbd className='text-md text-justify p-5 text-white rounded-xl' style={{
-                backgroundColor: "rgba(0, 0, 0, 0.1)",
+                // backgroundColor: "rgba(0,0,0,0.4)",
                 backdropFilter: "blur(5px)"
               }}> {randomQuote} </kbd>
             </div>
@@ -121,8 +124,11 @@ const Section1 = () => {
           else {
             setCurrentIndex(currentIndex + 1);
           };
-        }} className="switchBg absolute bottom-4 right-4 h-10 w-28 flex items-center justify-evenly text-white text-bold cursor-pointer hover:border hover:border-gray-200">
-          <FontAwesomeIcon icon={faExchange} />
+        }} className="switchBg rounded-xl absolute bottom-4 right-4 h-10 w-28 flex items-center justify-evenly text-white text-bold cursor-pointer hover:border hover:border-gray-200" style={{
+          backgroundColor: "rgba(0, 0, 0, 0.1)",
+          backdropFilter: "blur(5px)"
+        }}>
+          <FontAwesomeIcon icon={faExchange}/>
           <span>Switch</span>
         </div>
         <div className='text-white absolute bottom-4' style={{ left: "50%" }}> <a href="#section1"><FontAwesomeIcon icon={faAnglesUp} size='2xl' /></a> </div>
