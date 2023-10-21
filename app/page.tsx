@@ -14,7 +14,6 @@ export default function Home() {
       <Section1></Section1>
 
       {/* <div className='h-screen bg-gray-900'></div> */}
-      <Section2></Section2>
       <Navbar></Navbar>
     </main>
   )
