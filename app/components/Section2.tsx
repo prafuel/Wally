@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import { height } from '@fortawesome/free-solid-svg-icons/faGlobe'
 
 const Section2 = () => {
     const mountain = "Climb the mountain not to plant your flag, but to embrace the challenge, enjoy the air, and behold the view. Climb it so you can see the world, not so the world can see you"
@@ -7,8 +8,6 @@ const Section2 = () => {
     const nature = "Nature, the eternal masterpiece, weaves its intricate tapestry of life, where every leaf, creature, and landscape is a testament to the wonders of creation. In its serenity, we find solace; in its diversity, we discover unity."
     const arr = [mountain, summer, nature];
     return (
-        <>
-
             <div id='section2' className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5 text-white" style={{
                 height: "70vh"
             }}>
@@ -70,9 +69,6 @@ const Section2 = () => {
                     </div>
                 </div>
             </div>
-
-
-        </>
     )
 }
 
