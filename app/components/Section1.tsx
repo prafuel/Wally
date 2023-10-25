@@ -142,14 +142,15 @@ const Section1 = () => {
       <div className='showImages bg-gray-900 justify-center pt-3 flex flex-wrap gap-3'>
         {
           images.map((image: any) => {
-            // console.log(`id=${image.id}`)
+            console.log(`link=${image.links.html}`)
             return (
               // <img src={image.urls.raw} alt={image.alt_description}/>
               <>
                 <div id="section1" key={Date.toString()} className='border border-gray-700 p-4 inline rounded-xl mb-10 mt-3 hover:border-2 hover:border-white' style={{ width: "30%" }}>
                   <div className="optionSection flex flex-row-reverse items-center w-full justify-between">
                     <div className="download p-2 mb-3 flex justify-end items-center gap-3 text-xl text-white">
-                      <FontAwesomeIcon className='cursor-pointer' icon={faDownload} />
+                      
+                      <a href={image.links.html} target='blank'><FontAwesomeIcon className='cursor-pointer' icon={faDownload} /></a>
                       <FontAwesomeIcon icon={faShare} />
                       {/* <FontAwesomeIcon icon={faCircleInfo} /> */}
                     </div>
