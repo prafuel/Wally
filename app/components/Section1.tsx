@@ -7,6 +7,8 @@ import { faAnglesUp } from '@fortawesome/free-solid-svg-icons'
 import { faDownload } from '@fortawesome/free-solid-svg-icons'
 import { faShare } from '@fortawesome/free-solid-svg-icons'
 import { faExchange } from '@fortawesome/free-solid-svg-icons'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faCircleInfo } from '@fortawesome/free-solid-svg-icons'
 
 import { Button, Form } from 'react-bootstrap'
 import axios from 'axios'
@@ -40,8 +42,8 @@ const Section1 = () => {
         const { data } = await axios.get(`${API_URL}?query=${searchInput.current['value']}&page=${page}&per_page=${IMAGES_PER_PAGE}&client_id=${API_KEY}`);
         setImages(data.results);
         setTotalPages(data.total_pages);
+        console.log(data);
       }
-      // console.log("result", result.data);
     } catch (error) {
       console.log(error);
     }
@@ -112,7 +114,7 @@ const Section1 = () => {
             </div>
             <div className="w-full h-fit flex flex-row justify-evenly cursor-pointer flex-wrap">
               {
-                hashtagArr.map((item: string,index) => {
+                hashtagArr.map((item: string, index) => {
                   return (
                     <span key={index} onClick={() => addIntoSearch(item)} className='text-white p-2 hover:text-blue-400'>#{item}</span>
                   )
@@ -140,15 +142,23 @@ const Section1 = () => {
       <div className='showImages bg-gray-900 justify-center pt-3 flex flex-wrap gap-3'>
         {
           images.map((image: any) => {
+            // console.log(`id=${image.id}`)
             return (
               // <img src={image.urls.raw} alt={image.alt_description}/>
               <>
                 <div id="section1" key={Date.toString()} className='border border-gray-700 p-4 inline rounded-xl mb-10 mt-3 hover:border-2 hover:border-white' style={{ width: "30%" }}>
-                  <div className="download p-2 mb-3 flex justify-end items-center gap-3">
-                    <FontAwesomeIcon icon={faDownload} className='text-xl text-white' />
-                    <FontAwesomeIcon icon={faShare} className='text-xl text-white' />
+                  <div className="optionSection flex flex-row-reverse items-center w-full justify-between">
+                    <div className="download p-2 mb-3 flex justify-end items-center gap-3 text-xl text-white">
+                      <FontAwesomeIcon className='cursor-pointer' icon={faDownload} />
+                      <FontAwesomeIcon icon={faShare} />
+                      {/* <FontAwesomeIcon icon={faCircleInfo} /> */}
+                    </div>
+                    <div className="likes p-2 mb-3 flex flex-row items-center gap-2 text-white">
+                      <FontAwesomeIcon icon={faHeart} />
+                      <span className='text-lg'>{image.likes}</span>
+                    </div>
                   </div>
-                  <img className='rounded-xl' src={image.urls.full} alt={image.alt_description} style={{ backgroundSize: "contain" }} />
+                  <img id={image.id} className='rounded-xl' src={image.urls.full} alt={image.alt_description} style={{ backgroundSize: "contain" }} />
                 </div>
               </>
             )
