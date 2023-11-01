@@ -146,10 +146,10 @@ const Section1 = () => {
             return (
               // <img src={image.urls.raw} alt={image.alt_description}/>
               <>
-                <div id="section1" key={Date.toString()} className='border border-gray-700 p-4 inline rounded-xl mb-10 mt-3 hover:border-2 hover:border-white' style={{ width: "30%" }}>
+                <div id="section1" key={Date.toString()} className='border border-gray-700 p-4 inline rounded-xl mb-10 mt-3 hover:border-2  hover:border-white' style={{ width: "30%" }}>
                   <div className="optionSection flex flex-row-reverse items-center w-full justify-between">
                     <div className="download p-2 mb-3 flex justify-end items-center gap-3 text-xl text-white">
-                      
+
                       <a href={image.links.html} target='blank'><FontAwesomeIcon className='cursor-pointer' icon={faDownload} /></a>
                       <FontAwesomeIcon icon={faShare} />
                       {/* <FontAwesomeIcon icon={faCircleInfo} /> */}
@@ -159,7 +159,7 @@ const Section1 = () => {
                       <span className='text-lg'>{image.likes}</span>
                     </div>
                   </div>
-                  <img id={image.id} className='rounded-xl' src={image.urls.full} alt={image.alt_description} style={{ backgroundSize: "contain" }} />
+                  <img id={image.id} className='rounded-xl drop-shadow-xl blur-md hover:blur-none' src={image.urls.full} alt={image.alt_description} style={{ backgroundSize: "contain" }} />
                 </div>
               </>
             )
